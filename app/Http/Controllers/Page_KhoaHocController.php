@@ -33,7 +33,7 @@ class Page_KhoaHocController extends Controller
     public function getDangKiKhoaHoc($id){
         $dangkikhoahoc = DB::table('khoahoc')->where('id',$id)->where('TrangThai',1)->orderBy('id','asc')->first();
         $binhluan = DB::table('binhluan')
-            ->select('binhluan.id','binhluan.NoiDung','binhluan.TrangThai','baihoc.TieuDe','baihoc.updated_at','users.name')
+            ->select('binhluan.id','binhluan.NoiDung','binhluan.TrangThai','baihoc.TieuDe','baihoc.updated_at','users.name','binhluan.updated_at as bl_date')
             ->join('users','users.id','=','binhluan.idUser')
             ->join('baihoc','baihoc.id','=','binhluan.idBaiHoc')
             ->join('khoahoc','khoahoc.id','=','baihoc.idKhoaHoc')
@@ -45,7 +45,7 @@ class Page_KhoaHocController extends Controller
             ->with(compact('binhluan'));
     }
 
-    public function getKhoaHocUser(){
+    public function getKhoaHocDaDangKi(){
         $user_id = Session::get('user_id');
         $dangkikhoahoc = DB::table('dangkikhoahoc')
             ->select('khoahoc.id','khoahoc.Ten','khoahoc.GiaKhoaHoc','users.name','khoahoc.HinhAnh','idKhoaHoc','dangkikhoahoc.id as idDKKH')

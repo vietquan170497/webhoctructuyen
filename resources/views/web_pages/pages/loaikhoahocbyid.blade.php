@@ -32,9 +32,12 @@
                                                 ?>
                                             </h2>
                                             @if($kh->GiaKhoaHoc == 0)
-                                                <h4>{{'Miễn phí'}}</h4>
+                                                <p style="font-size: 22px; font-weight: bold; color: #1d3da7; ">{{'Miễn phí'}}</p>
                                             @else
-                                                <h4>{{'Giá : '.$kh->GiaKhoaHoc}}</h4>
+                                                <p style="font-size: 22px; font-weight: bold; color: #1d3da7; ">
+                                                    {{'Giá :&nbsp;'}}
+                                                    {{number_format($kh->GiaKhoaHoc)}}
+                                                </p>
                                             @endif
                                         </div>
                                     </div>

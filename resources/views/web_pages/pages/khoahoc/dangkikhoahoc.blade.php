@@ -105,7 +105,11 @@
                                                     <div class="row" style="padding: 0px 20px">
                                                         <p style="color: #fe980f"><b>Bài học : {{$bl->TieuDe}}</b></p>
                                                         <p style=""><b>{{$bl->name}} :</b> {{$bl->NoiDung}}</p>
-                                                        <p style="float: right;font-size: 14px">  {{$bl->time = date('d - m - Y',strtotime($bl->updated_at))}}</p>
+                                                        <p style="float: right;font-size: 14px"> 
+                                                            {{$bl->time = date('h : i',strtotime($bl->bl_date))}} 
+                                                            {{", "}}
+                                                            {{$bl->time = date('d - m - Y',strtotime($bl->bl_date))}}
+                                                        </p>
                                                     </div>
                                                 </div>
                                             @endforeach

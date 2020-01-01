@@ -161,7 +161,7 @@ Route::group(['prefix'=>'page'],function () {
     Route::get('khoahoc','Page_KhoaHocController@getKhoaHoc');
     Route::get('khoahoc/{id}','Page_KhoaHocController@getKhoaHocById');
     Route::get('dangkikhoahoc/{id}','Page_KhoaHocController@getDangKiKhoaHoc');
-    Route::get('khoahoc_user','Page_KhoaHocController@getKhoaHocUser');
+    Route::get('khoahoc_user','Page_KhoaHocController@getKhoaHocDaDangKi');
     Route::get('dangkikhoahoc/dangki/{id}','Page_KhoaHocController@getDangKi');
     Route::post('dangkikhoahoc/dangki/{id}','Page_KhoaHocController@postDangKi');
     Route::get('xoakhoahoc/{id}','Page_KhoaHocController@getXoaKhoaHoc');

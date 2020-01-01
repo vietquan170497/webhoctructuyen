@@ -54,11 +54,11 @@
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mật khẩu (<p style="display: inherit; color: red">*</p>)</label>
-                            <input type="password" class="password" style="font-weight: bold; color: #000000; font-size: 18px; padding-left: 20px;" name="matkhaucu" value="" placeholder="Nhâp mật khẩu cũ" />
+                            <input type="password" class="password" style="font-weight: bold; color: #000000; font-size: 18px; padding-left: 20px;" name="matkhaucu" value="" placeholder="Nhâp mật khẩu" />
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nhập lại mật khẩu (<p style="display: inherit; color: red">*</p>)</label>
-                            <input type="password" class="password" style="font-weight: bold; color: #000000; font-size: 18px; padding-left: 20px" name="matkhaucu2" placeholder="Nhập lại mật khẩu mới" />
+                            <input type="password" class="password" style="font-weight: bold; color: #000000; font-size: 18px; padding-left: 20px" name="matkhaucu2" placeholder="Nhập lại mật khẩu" />
                         </div>
                         <table>
                             <tr>
