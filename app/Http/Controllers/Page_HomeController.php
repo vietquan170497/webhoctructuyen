@@ -18,6 +18,12 @@ class Page_HomeController extends Controller
         view()->share(compact('khoahoc'));
         view()->share(compact('slide'));
     }
+    public function AuthLogin(){
+        $user_id = Session::get('user_id');
+        if(!$user_id){
+            return redirect('page/dangnhap')->send();
+        }
+    }
 
     public function getHome(){
         $khoahoc_home = DB::table('khoahoc')->where('TrangThai',1)->orderBy('id','DESC')->limit(9)->get();
@@ -46,6 +52,7 @@ class Page_HomeController extends Controller
     }
 
     public function getBaiHocById($id){
+        $this->AuthLogin();
         $baihocbyid = DB::table('baihoc')->where('id',$id)->where('TrangThai',1)->first();
         $idKhoaHoc = $baihocbyid->idKhoaHoc;
         $baihoc_lienquan = DB::table('baihoc')

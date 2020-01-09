@@ -30,7 +30,7 @@ class Admin_BaiHocController extends Controller
     public function getDanhSach(){
         $this->AuthLogin();
         $khoahoc = DB::table('khoahoc')->orderBy('id','asc')->get();
-        $baihoc = DB::table('baihoc')->orderBy('id','asc')->paginate(9);
+        $baihoc = DB::table('baihoc')->orderBy('id','desc')->paginate(10);
 
         return view('admin.baihoc.danhsach')->with('khoahoc',$khoahoc)->with('baihoc',$baihoc);
     }

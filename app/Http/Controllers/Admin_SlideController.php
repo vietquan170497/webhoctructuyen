@@ -27,7 +27,7 @@ class Admin_SlideController extends Controller
     }
     public function getDanhSach(){
         $this->AuthLogin();
-        $slides = DB::table('slide')->orderBy('id','asc')->paginate(9);
+        $slides = DB::table('slide')->orderBy('id','desc')->paginate(9);
 
         return view('admin.slide.danhsach')->with('slides',$slides);
     }

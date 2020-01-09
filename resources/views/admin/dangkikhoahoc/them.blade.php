@@ -52,8 +52,8 @@
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Active</label>
                                 <select class="form-control m-bot15" name="TrangThai">
-                                    <option value="0">Deactive</option>
                                     <option value="1">Active</option>
+                                    <option value="0">Deactive</option>                                    
                                 </select>
                             </div>
                             <button type="submit" class="btn btn-info">Thêm</button>

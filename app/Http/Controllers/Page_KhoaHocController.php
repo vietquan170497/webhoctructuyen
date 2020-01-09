@@ -17,6 +17,12 @@ class Page_KhoaHocController extends Controller
         view()->share(compact('khoahoc'));
         view()->share(compact('slide'));
     }
+    public function AuthLogin(){
+        $user_id = Session::get('user_id');
+        if(!$user_id){
+            return redirect('page/dangnhap')->send();
+        }
+    }
 
     public function getKhoaHoc(){
         $khoahocs = DB::table('khoahoc')->where('TrangThai',1)->orderBy('id','asc')->paginate(9);
@@ -24,6 +30,7 @@ class Page_KhoaHocController extends Controller
     }
 
     public function getKhoaHocById($id){
+        $this->AuthLogin();
         $baihoc = DB::table('baihoc')->where('idKhoaHoc',$id)->where('TrangThai',1)->paginate(9);
         return view('web_pages.pages.khoahoc.khoahocbyid')
             ->with(compact('baihoc'))

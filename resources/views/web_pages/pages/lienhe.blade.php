@@ -21,7 +21,7 @@
                 <div class="contact-info">
                     <h2 class="title text-center">thông tin liên hệ</h2>
                     <address>
-                        <p>- EDUCATION.</p>
+                        <p>- EDUCATION ONLINE.</p>
                         <p>- Số 55 đường Giải Phóng, p.Đồng Tâm, q.Hai Bà Trưng, TP Hà Nội.</p>
                         <p>- Mobile: +84 123 456 789.</p>
                         <p>- Email: education@gmail.com.</p>

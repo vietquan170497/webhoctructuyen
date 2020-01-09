@@ -29,7 +29,7 @@ class Admin_KhoaHocController extends Controller
     public function getDanhSach(){
         $this->AuthLogin();
         $loaikhoahoc = DB::table('loaikhoahoc')->orderBy('id','asc')->get();
-        $khoahoc = DB::table('khoahoc')->orderBy('id','asc')->paginate(10);
+        $khoahoc = DB::table('khoahoc')->orderBy('id','desc')->paginate(10);
 
         return view('admin.khoahoc.danhsach')->with('khoahoc',$khoahoc)->with('loaikhoahoc',$loaikhoahoc);
     }
