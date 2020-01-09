@@ -230,8 +230,8 @@ class Admin_DangKiKhoaHocController extends Controller
 
     public function getXoa($id){
         $this->AuthLogin();
-        DB::table('dangkikhoahoc')->where('id',$id)->delete();
-        Session::put('message','Khóa học với id = '.$id.' xóa thành công');
+        DB::table('dangkikhoahoc')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái Đăng kí khóa học với id = '.$id.' được Ẩn');
         return Redirect::to('admin/dangkikhoahoc/danhsach');
     }
 

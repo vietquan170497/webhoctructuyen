@@ -48,9 +48,13 @@
                             <td>
                                 <span class="text-ellipsis">
                                     @if($user->TrangThai==0)
-                                        <a href="admin/user/deactive/{{$user->id}}"><button class="btn btn-info" style="width: 80px;">Ẩn</button></a>
+{{--                                        <a href="admin/user/deactive/{{$user->id}}">--}}
+                                            <button class="btn btn-info" style="width: 80px;">Ẩn</button>
+{{--                                        </a>--}}
                                     @else
-                                        <a href="admin/user/active/{{$user->id}}"><button class="btn btn-info" style="width: 80px;">Hiện</button></a>
+{{--                                        <a href="admin/user/active/{{$user->id}}">--}}
+                                            <button class="btn btn-info" style="width: 80px;">Hiện</button>
+{{--                                        </a>--}}
                                     @endif
                                 </span>
                             </td>

@@ -27,7 +27,7 @@ class Admin_LoaiKhoaHocController extends Controller
     }
     public function getDanhSach(){
         $this->AuthLogin();
-        $loaikhoahoc = DB::table('loaikhoahoc')->paginate(9);
+        $loaikhoahoc = DB::table('loaikhoahoc')->orderBy('id','desc')->paginate(10);
 
         return view('admin.loaikhoahoc.danhsach')->with('loaikhoahoc',$loaikhoahoc);
     }
@@ -96,8 +96,9 @@ class Admin_LoaiKhoaHocController extends Controller
     }
     public function getXoa($id){
         $this->AuthLogin();
-        DB::table('loaikhoahoc')->where('id',$id)->delete();
-        Session::put('message','Loại khóa học với id = '.$id.' xóa thành công');
+        $this->AuthLogin();
+        DB::table('loaikhoahoc')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái loại khóa học với id = '.$id.' được Ẩn');
         return Redirect::to('admin/loaikhoahoc/danhsach');
     }
 }

@@ -23,8 +23,8 @@ class Admin_BinhLuanController extends Controller
     }
     public function getXoa($id){
         $this->AuthLogin();
-        DB::table('binhluan')->where('id',$id)->delete();
-        Session::put('message','Comment xóa thành công');
+        DB::table('binhluan')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái bình luận với id = '.$id.' được Ẩn');
         return Redirect::to('admin/baihoc/danhsach');
     }
 }

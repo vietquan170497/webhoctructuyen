@@ -115,6 +115,7 @@ class Admin_UserController extends Controller
         $data = array();
         $data['name'] = $request->name;
         $data['TaiKhoan'] = $request->TaiKhoan;
+        $data['TrangThai'] = $request->TrangThai;
         if($request->changePassword == "on"){
             $this->validate($request,
                 [
@@ -137,12 +138,8 @@ class Admin_UserController extends Controller
     }
     public function getXoa($id){
         $this->AuthLogin();
-        if(DB::table('users')->where('id',$id)->delete()){
-            Session::put('message','Người dùng với id = '.$id.' xóa thành công');
-            return Redirect::to('admin/user/danhsach');
-        }else{
-            Session::put('error_message','xóa thất bại');
-            return redirect('admin/user/danhsach');
-        }
+        DB::table('users')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái người dùng với id = '.$id.' được Ẩn');
+        return Redirect::to('admin/user/danhsach');
     }
 }

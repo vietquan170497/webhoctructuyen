@@ -215,8 +215,8 @@ class Admin_BaiHocController extends Controller
     }
     public function getXoa($id){
         $this->AuthLogin();
-        DB::table('baihoc')->where('id',$id)->delete();
-        Session::put('message','Bài học với id = '.$id.' xóa thành công');
+        DB::table('baihoc')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái bài học với id = '.$id.' được Ẩn');
         return Redirect::to('admin/baihoc/danhsach');
     }
 }

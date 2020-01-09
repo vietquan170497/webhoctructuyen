@@ -53,26 +53,40 @@ class Page_HomeController extends Controller
 
     public function getBaiHocById($id){
         $this->AuthLogin();
-        $baihocbyid = DB::table('baihoc')->where('id',$id)->where('TrangThai',1)->first();
-        $idKhoaHoc = $baihocbyid->idKhoaHoc;
-        $baihoc_lienquan = DB::table('baihoc')
-            ->where('baihoc.idKhoaHoc',$idKhoaHoc)
-            ->where('baihoc.TrangThai',1)
-            ->paginate(4);
-        $binhluan = DB::table('binhluan')
-            ->select('binhluan.id','binhluan.NoiDung','binhluan.TrangThai','baihoc.TieuDe','baihoc.updated_at','users.name')
-            ->join('users','users.id','=','binhluan.idUser')
-            ->join('baihoc','baihoc.id','=','binhluan.idBaiHoc')
-            ->where('binhluan.TrangThai',1)
+        $baihocbyid = DB::table('baihoc')
+            ->select('baihoc.id','baihoc.TieuDe','baihoc.TomTat','baihoc.NoiDung','baihoc.HinhAnh','baihoc.Video','baihoc.NoiBat',
+                'baihoc.SoLuotXem','baihoc.idKhoaHoc as idKhoaHoc','baihoc.TrangThai','baihoc.created_at','baihoc.updated_at')
+            ->join('khoahoc','khoahoc.id','=','baihoc.idKhoaHoc')
             ->where('baihoc.id',$id)
-            ->paginate(10);
-        //var_dump($binhluan); exit();
-        $idBaiHoc = $id;
-        return view('web_pages.pages.baihocbyid')
-            ->with(compact('baihocbyid'))
-            ->with(compact('baihoc_lienquan'))
-            ->with(compact('binhluan'))
-            ->with(compact('idBaiHoc'));
+            ->where('baihoc.TrangThai',1)
+            ->where('khoahoc.TrangThai',1)
+            ->first();
+        if($baihocbyid) {
+            $idKhoaHoc = $baihocbyid->idKhoaHoc;
+
+            $baihoc_lienquan = DB::table('baihoc')
+                ->where('baihoc.idKhoaHoc',$idKhoaHoc)
+                ->where('baihoc.TrangThai',1)
+                ->paginate(4);
+            $binhluan = DB::table('binhluan')
+                ->select('binhluan.id','binhluan.NoiDung','binhluan.TrangThai','baihoc.TieuDe','baihoc.updated_at','users.name')
+                ->join('users','users.id','=','binhluan.idUser')
+                ->join('baihoc','baihoc.id','=','binhluan.idBaiHoc')
+                ->where('binhluan.TrangThai',1)
+                ->where('baihoc.id',$id)
+                ->paginate(10);
+            //var_dump($binhluan); exit();
+            $idBaiHoc = $id;
+            return view('web_pages.pages.baihocbyid')
+                ->with(compact('baihocbyid'))
+                ->with(compact('baihoc_lienquan'))
+                ->with(compact('binhluan'))
+                ->with(compact('idBaiHoc'));}
+        else{
+            $idBaiHoc = $id;
+            return view('web_pages.pages.baihocbyid')
+                ->with(compact('baihocbyid'))->with(compact('idBaiHoc'));
+        }
     }
 
     public function getLienHe()

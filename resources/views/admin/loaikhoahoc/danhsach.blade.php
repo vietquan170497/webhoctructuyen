@@ -39,9 +39,13 @@
                             <td>
                                 <span class="text-ellipsis">
                                     @if($lkh->TrangThai==0)
-                                        <a href="admin/loaikhoahoc/deactive/{{$lkh->id}}"><button class="btn btn-info" style="width: 80px;">Ẩn</button></a>
+{{--                                        <a href="admin/loaikhoahoc/deactive/{{$lkh->id}}">--}}
+                                            <button class="btn btn-info" style="width: 80px;">Ẩn</button>
+{{--                                        </a>--}}
                                     @else
-                                        <a href="admin/loaikhoahoc/active/{{$lkh->id}}"><button class="btn btn-info" style="width: 80px;">Hiện</button></a>
+{{--                                        <a href="admin/loaikhoahoc/active/{{$lkh->id}}">--}}
+                                            <button class="btn btn-info" style="width: 80px;">Hiện</button>
+{{--                                        </a>--}}
                                     @endif
                                 </span>
                             </td>

@@ -191,7 +191,7 @@ class Admin_KhoaHocController extends Controller
             if($hinhanh_old!=""){
                 unlink('upload/khoahoc/'.$hinhanh_old);
             }
-            return redirect('admin/khoahoc/danhsach')->with('message','Bạn sửa thành công');
+            return redirect('admin/khoahoc/danhsach')->with('message','Bạn sửa id = '.$id.' thành công');
         }
         else{
             return redirect('admin/khoahoc/danhsach')->with('error_message','Bạn sửa thất bại');
@@ -199,12 +199,9 @@ class Admin_KhoaHocController extends Controller
     }
     public function getXoa($id){
         $this->AuthLogin();
-        if(DB::table('khoahoc')->where('id',$id)->delete()){
-            //Session::put('message','Khóa học với id = '.$id.' xóa thành công');
-            return redirect('admin/khoahoc/danhsach')->with('message','Khóa học với id = '.$id.' xóa thành công');
-        }else{
-            return redirect('admin/khoahoc/danhsach')->with('error_message','Khóa học với id = '.$id.' xóa thất bại');
-        }
+        DB::table('khoahoc')->where('id',$id)->update(['TrangThai'=>0]);
+        Session::put('message','Trạng thái khóa học với id = '.$id.' được Ẩn');
+        return Redirect::to('admin/khoahoc/danhsach');
 
     }
 }

@@ -43,6 +43,23 @@
                                     <label for="">Tài Khoản</label>
                                     <input type="text" name="TaiKhoan" class="form-control" placeholder="Nhập tài khoản" value="{{$user->TaiKhoan}}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Active</label>
+                                    <select class="form-control m-bot15" name="TrangThai">
+                                        <option value="0"
+                                        @if($user->TrangThai==0)
+                                            {{"selected"}}
+                                                @endif
+                                        >Deactive
+                                        </option>
+                                        <option value="1"
+                                        @if($user->TrangThai==1)
+                                            {{"selected"}}
+                                                @endif
+                                        >Active
+                                        </option>
+                                    </select>
+                                </div>
                                 <button type="submit" class="btn btn-info" id="btn_submit">Sửa</button>
                                 <a href="admin/user/danhsach"><input type="button" class="btn btn-info" value="Hủy"></a>
                             </form>
